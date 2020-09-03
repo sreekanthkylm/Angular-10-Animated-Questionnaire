@@ -16,14 +16,14 @@ which opens the application in localhost:4200 and your system requires a recent 
 
 # Questionnaire Details
 
+* Questionnaire Questions are in German or Deutsch Language.
 * The application is in Angular 10 with recent version of Node and used Angular material component library, SCSS, flexbox layout module. 
-* Angular Animations is used for animating the contents 
+* Angular Animations is used for animating the contents. 
 * Application Unit testing is done with Karma and Jasmine with 100% code coverage. 
 * Application is fully responsive.
-* Questionnaire	is	based	on	a	JSON	that	the	frontend	uses	to	drive	the	questions
+* Questionnaire	is	based	on	a	JSON	that	the	frontend	uses	to	drive	the	questions.
 * Angular Two-way Binding is used for storing answers so users can go back and forward without losing the answers.
-* Questionnaire Questions are in German or deutsch Language
-* User	can	go	back to	a previous question	without	losing the answers given in a current question
+* User	can	go	back to	a previous question	without	losing the answers given in a current question.
 * Completion progress is shown with a progress bar.
 * Customized and Stylish Boxes and icons instead of normal radio buttons.
 
@@ -57,7 +57,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 * Mobile - Questionnaire Completed
 
-![](assets/mobilesinglefinished.jpg)
+![](assets/mobilefinished.jpg)
 
 * ipad - Answer Selected
 
@@ -73,7 +73,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 * laptop - Answer Selected
 
-![](assets/qntype1answerselcted.png)
+![](assets/qntype1answerselected.png)
 
 * laptop - Question with yes or no answers
 
@@ -85,11 +85,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 * laptop -  Questionnaire Completed
 
-![](assets/ldfinished.PNG)
+![](assets/ldfinished.png)
 
 * Code Coverage
 
-![](assets/codecoverage.PNG)
+![](assets/codecoverage.png)
 
 ## Further help
 
