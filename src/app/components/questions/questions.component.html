@@ -1,0 +1,78 @@
+<div class="main-container" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <ng-container *ngIf="questionnaireList">
+        <div [fxFlex]="100 + '%'" fxFlex.xs="100%">
+            <h1>{{questionnaireList.name}}</h1>
+            <ng-container *ngIf="!taskCompleted">
+                <div *ngFor="let question of questionnaireList.questions; index as i">
+                    <div class="question-container" *ngIf="showStep[i]">
+                        <div class="question-head" [@slideInOut]>
+                            <span class="round-span">{{i+1}}</span>
+                            <p>{{question.headline}}</p>
+                        </div>
+                        <div [@listAnimation] class="flex-container">
+                            <div *ngIf="question.question_type=='text' && question.multiline=='false'">
+                                <input matInput required="question.required" id="question.identifier"
+                                    class="form-field input" [(ngModel)]="question.answer"
+                                    (ngModelChange)="updateProgress(i,question.answer)"ng t>
+                            </div>
+                            <div *ngIf="question.question_type=='text' && question.multiline=='true'">
+                                <textarea matInput required="question.required" id="question.identifier"
+                                    class="form-field text-area" [(ngModel)]="question.answer"
+                                    (ngModelChange)="updateProgress(i,question.answer)"></textarea>
+                            </div>
+                            <ng-container
+                                *ngIf="question.question_type=='multiple-choice' && question.multiple=='false'">
+                                <ng-container *ngFor="let choice of question.choices; index as j">
+                                    <input class="checkbox-tools" type="radio" [(ngModel)]="question.answer"
+                                        (ngModelChange)="updateProgress(i,question.answer)" name="question.identifier"
+                                        id="choice{{j}}" [value]="choice.value" required="question.required">
+                                    <label class="for-checkbox-tools" for="choice{{j}}">
+                                        <div class='uil uil-icon uil-pcp-alt'
+                                            *ngIf="choice.label=='Meine Familie mit Kindern'">
+                                        </div>
+                                        <div class='uil uil-icon uil-pp-alt'
+                                            *ngIf="choice.label=='Meine Familie ohne Kinder'">
+                                        </div>
+                                        <div class='uil uil-icon uil-p-alt' *ngIf="choice.label=='Mich ohne Kind'">
+                                        </div>
+                                        <div class='uil uil-icon uil-pc-alt' *ngIf="choice.label=='Mich mit Kind'">
+                                        </div>
+                                        <div class='uil uil-icon uil-prp-alt'
+                                            *ngIf="choice.label=='Mich und meinen Lebenspartner'">
+                                        </div>
+                                        <div class='uil uil-icon uil-ja-alt'
+                                            *ngIf="choice.label.includes('Ja') && question.choices.length==2">
+                                        </div>
+                                        <div class='uil uil-icon uil-nein-alt'
+                                            *ngIf="choice.label=='Nein' && question.choices.length==2">
+                                        </div>
+                                        <div class='uil'>
+                                            {{choice.label}}
+                                        </div>
+                                    </label>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                        <div @explainerAnim>
+                            <button mat-raised-button *ngIf="i!=0" (click)="onBack(i)">Back</button>
+                            <button mat-raised-button color="primary" *ngIf="i!==(questionnaireList.questions.length-1)"
+                                (click)="onNext(i)">Next</button>
+                            <button mat-raised-button color="primary" *ngIf="progress==100"
+                                (click)="onFinish()">Finish</button>
+                        </div>
+                        <div [@slideInOut]>
+                            <mat-progress-bar [value]="progress"></mat-progress-bar>
+                            <p>{{progress}} % Completed</p>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="question-container completed-screen" *ngIf="taskCompleted">
+                <div class="question-head" [@slideInOut]>
+                    <span class="green-info"></span>
+                    <p>Vielen Dank für das Ausfüllen des Fragebogens</p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
